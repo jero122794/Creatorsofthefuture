@@ -1,6 +1,9 @@
 const controller = {
   index: (req, res) => {
-    res.send("Ruta Principal")
+    res.render("home", {title: 'home'})
+  },
+  error404: (req, res) => {
+    res.render('error', {title: 'error'})
   }
 }
 
