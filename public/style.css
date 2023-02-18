@@ -4,3 +4,10 @@
     padding: 0px;
 }
 
+:root{
+    scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
