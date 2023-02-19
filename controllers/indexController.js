@@ -4,6 +4,9 @@ const controller = {
   },
   error404: (req, res) => {
     res.render('error', {title: 'error'})
+  },
+  register: (req, res) => {
+    res.render('register', {title: 'register'})
   }
 }
 

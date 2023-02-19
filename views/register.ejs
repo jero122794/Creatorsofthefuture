@@ -6,28 +6,51 @@
         <form action="/register/" method="post" enctype="multipart/form-data">
             <div class="input_label">
                 <label for="name">Nombre</label>
-                <input type="text" name="name" id="name" required>
+                <input class="input" type="text" name="name" id="name" required>
             </div>
             <div class="input_label">
                 <label for="lastName">Apellidos</label>
-                <input type="text" name="lastName" id="lastName" required>
+                <input class="input" type="text" name="lastName" id="lastName" required>
             </div>
             <div class="input_label">
                 <label for="mail">Correo Electrónico</label>
-                <input type="email" name="mail" id="mail" required>
+                <input class="input" type="email" name="mail" id="mail" required>
             </div>
             <div class="input_label">
                 <label for="phNumber">Número de teléfono</label>
-                <input type="number" name="phNumber" id="phNumber" required>
+                <input class="input" type="number" name="phNumber" id="phNumber" required>
             </div>
             <div class="input_label">
                 <label for="role">Rol</label>
-                <input type="text" name="role" id="role" required>
+                <input class="input" type="text" name="role" id="role" required>
             </div>
-            <div class="">
-
+            <div class="input_label">
+                <label for="description">Descríbete brevemente</label>
+                <textarea class="input" name="description" id="description" cols="15" rows="7"></textarea>
             </div>
+            <div class="input_label">
+                <label for="academy">Academia en la que cursaste</label>
+                <select class="input" name="academy" id="academy">
+                    <option value="DigitalHouse">Digital House</option>
+                    <option value="Makaia">Makaia</option>
+                    <option value="AcademiaGeek">Academia Geek</option>
+                </select>
+            </div>
+            <div class="input_label">
+                <label for="cv">Link hoja de vida</label>
+                <input class="input" type="text" name="cv" id="cv" required>
+            </div>
+            <div class="input_label">
+                <label for="linkedIn">Link a tu perfil de linkedIn</label>
+                <input class="input" type="text" name="linkedIn" id="linkedIn">
+            </div>
+            <div class="form_buttonBox">
+                <button class="form_button button" type="submit">Enviar</button>
+                <button class="form_button button" type="reset">Reiniciar</button>
+            </div>
+            
         </form>
     </section>
 </body>
+<script src="../public/js/register.jsx"></script>
 </html>
