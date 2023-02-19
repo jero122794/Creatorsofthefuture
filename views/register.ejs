@@ -1,7 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-<body>
-    
+<body class="vp_register viewport">
+    <section class="register_form form">
+        <form action="/register/" method="post" enctype="multipart/form-data">
+            <div class="input_label">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="input_label">
+                <label for="lastName">Apellidos</label>
+                <input type="text" name="lastName" id="lastName" required>
+            </div>
+            <div class="input_label">
+                <label for="mail">Correo Electrónico</label>
+                <input type="email" name="mail" id="mail" required>
+            </div>
+            <div class="input_label">
+                <label for="phNumber">Número de teléfono</label>
+                <input type="number" name="phNumber" id="phNumber" required>
+            </div>
+            <div class="input_label">
+                <label for="role">Rol</label>
+                <input type="text" name="role" id="role" required>
+            </div>
+            <div class="">
+
+            </div>
+        </form>
+    </section>
 </body>
 </html>

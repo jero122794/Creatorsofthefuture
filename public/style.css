@@ -11,3 +11,12 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+/* General and shared tags */
+
+.input_label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
