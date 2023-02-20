@@ -19,6 +19,17 @@ body {
     flex-direction: column;
     margin-bottom: 5px;
 }
+.input{
+    height: 10%;
+    padding: 5px;
+}
+.input:focus {
+    box-shadow: 2px -2px 48px 0px rgba(130, 126, 126, 0.458) inset;
+}
+.form_invalidInput{
+    border: 5px solid red;
+    box-shadow: 2px -2px 48px 0px rgba(130, 126, 126, 0.458) inset;
+}
 
 /*Register form configuration*/
 .vp_register{
@@ -32,11 +43,3 @@ body {
     width: 40%;
     border-radius: 15px;
 }
-.input{
-    height: 10%;
-    padding: 5px;
-}
-.input:focus {
-    box-shadow: 2px -2px 48px 0px rgba(130, 126, 126, 0.458) inset;
-  
-  }
