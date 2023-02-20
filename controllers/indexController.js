@@ -66,7 +66,7 @@ catch(error){
   },
   create: function (req, res) {
     
-    db.usuarios.create(
+    db.usuarios.create( // se cambia  de req.body a req.body
       {
         nombre: req.body.nombre,
         apellidos: req.body.apellidos,
@@ -74,11 +74,11 @@ catch(error){
         celular: req.bodoy.celular,
         rol:false,//debe estar en falso por default 
         descripcion: req.body.descripcion,
-        image_url: req.bodoy.image_url,
-        academia:req.bodoy.academia,
-        linkedin_url:Req.bodoy.linkedin_url,
-        cv_url: req.bodoy.cv_url,
-        views_count: req.bodoy.views_count,
+        image_url: req.body.image_url,
+        academia:req.body.academia,
+        linkedin_url:req.body.linkedin_url,
+        cv_url: req.body.cv_url,     
+        views_count: req.body.views_count,
         last_viewed:req.body.last_viewed
       }
     ).then(usuarios => res.send(usuarios))
@@ -92,18 +92,18 @@ catch(error){
         imagen=req.file.filename;
     }
 
-        db.usuarios.update({
+        db.usuarios.update({ // se cambia  de req.body a req.body
           nombre: req.body.nombre,
           apellidos: req.body.apellidos,
           email: req.body.email,
-          celular: req.bodoy.celular,
+          celular: req.body.celular,
           //rol:req.body.rol,
           descripcion: req.body.descripcion,
-          image_url: req.bodoy.image_url,
-          academia:req.bodoy.academia,
-          linkedin_url:Req.bodoy.linkedin_url,
-          cv_url: req.bodoy.cv_url,
-          views_count: req.bodoy.views_count,
+          image_url: req.body.image_url,
+          academia:req.body.academia,
+          linkedin_url:req.body.linkedin_url,
+          cv_url: req.body.cv_url,
+          views_count: req.body.views_count,
           last_viewed:req.body.last_viewed
         },{
             where: {
