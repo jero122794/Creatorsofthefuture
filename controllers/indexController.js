@@ -66,6 +66,7 @@ catch(error){
 
   },
   create: function (req, res) {
+
     let errors=validationResult(req)
         
     if(!errors.isEmpty()){
@@ -107,7 +108,7 @@ catch(error){
         imagen=req.file.filename;
     }
 
-        db.usuarios.update({
+        db.usuarios.update({ // se cambia  de req.body a req.body
           nombre: req.body.nombre,
           apellidos: req.body.apellidos,
           email: req.body.email,

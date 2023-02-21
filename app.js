@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 
 
 var app = express();
+// server setup
+app.listen(3001, console.log("Online"))
 
 
 app.use(express.static(path.resolve(__dirname, 'public')))
