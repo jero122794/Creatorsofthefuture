@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const { validationResult } = require('express-validator');
 
 const controller = {
   index: async (req, res) => {
@@ -65,27 +66,41 @@ catch(error){
 
   },
   create: function (req, res) {
-    
-    db.usuarios.create(
-      {
-        nombre: req.body.nombre,
-        apellidos: req.body.apellidos,
-        email: req.body.email,
-        celular: req.bodoy.celular,
-        rol:false,//debe estar en falso por default 
-        descripcion: req.body.descripcion,
-        image_url: req.bodoy.image_url,
-        academia:req.bodoy.academia,
-        linkedin_url:Req.bodoy.linkedin_url,
-        cv_url: req.bodoy.cv_url,
-        views_count: req.bodoy.views_count,
-        last_viewed:req.body.last_viewed
-      }
-    ).then(usuarios => res.send(usuarios))
-      .catch(error => res.send(error))
+    let errors=validationResult(req)
+        
+    if(!errors.isEmpty()){
+      res.render("register",{errors:errors.array(), old:req.body})
+    }
+    else{
+      db.usuarios.create(
+        {
+          nombre: req.body.nombre,
+          apellidos: req.body.apellidos,
+          email: req.body.email,
+          celular: req.body.celular,
+          rol:false,//debe estar en falso por default 
+          descripcion: req.body.descripcion,
+          image_url: req.body.image_url,
+          academia:req.body.academia,
+          linkedin_url:Req.body.linkedin_url,
+          cv_url: req.body.cv_url,
+          views_count: req.body.views_count,
+          last_viewed:req.body.last_viewed
+        }
+      ).then(usuarios => res.send(usuarios))
+        .catch(error => res.send(error))
+        res.redirect('/login')
+    }
   },
   modify: (req,res) =>{ 
 
+    let errors=validationResult(req)
+        
+    if(!errors.isEmpty()){
+      res.render("modify",{errors:errors.array(), old:req.body})
+    }
+    else{
+      
     //cambiar imagenes, si no se envia la imagen sigue siendo la pasada
     let imagen =req.body.imagereserva;
     if (req.file != undefined) {
@@ -96,14 +111,14 @@ catch(error){
           nombre: req.body.nombre,
           apellidos: req.body.apellidos,
           email: req.body.email,
-          celular: req.bodoy.celular,
+          celular: req.body.celular,
           //rol:req.body.rol,
           descripcion: req.body.descripcion,
-          image_url: req.bodoy.image_url,
-          academia:req.bodoy.academia,
-          linkedin_url:Req.bodoy.linkedin_url,
-          cv_url: req.bodoy.cv_url,
-          views_count: req.bodoy.views_count,
+          image_url: req.body.image_url,
+          academia:req.body.academia,
+          linkedin_url:Req.body.linkedin_url,
+          cv_url: req.body.cv_url,
+          views_count: req.body.views_count,
           last_viewed:req.body.last_viewed
         },{
             where: {
@@ -111,12 +126,13 @@ catch(error){
             }
         })
         .then(usuarios => {
-            res.send(usuarios)
-            //res.render('.', {usuarios}) Esto queda por ver
+           // res.send(usuarios)
+          
         })
         .catch(error => res.send(error))
-        res.redirect('/')
+        res.redirect('/login')
     
+    }
     
 },
 destroy: (req,res) =>{
@@ -125,7 +141,7 @@ destroy: (req,res) =>{
             id: req.params.id
         }
     })
- 
+    res.redirect('/')
 }
 }
 
