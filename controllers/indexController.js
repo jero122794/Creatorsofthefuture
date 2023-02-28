@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const { validationResult } = require('express-validator');
 
 const controller = {
   index: async (req, res) => {
@@ -64,56 +65,74 @@ catch(error){
 
   },
   create: function (req, res) {
-    
-    db.usuarios.create(
-      {
-        nombre: req.body.name,
-        apellidos: req.body.lastName,
-        email: req.body.mail,
-        celular: req.bodoy.phNumber,
-        rol:false,//debe estar en falso por default // ¿¿Por que??
-        descripcion: req.body.description,
-        image_url: req.bodoy.image_url,
-        academia:req.bodoy.academy,
-        linkedin_url:Req.bodoy.linkedIn,
-        cv_url: req.bodoy.cv,
-        views_count: req.bodoy.views_count,
-        last_viewed:req.body.last_viewed// ¿Por que?
-      }
-    ).then(usuarios => res.send(usuarios))
-      .catch(error => res.send(error))
+
+    let errors=validationResult(req)
+        
+    if(!errors.isEmpty()){
+      res.render("register",{errors:errors.array(), old:req.body})
+    }
+    else{
+      db.usuarios.create(
+        {
+          nombre: req.body.nombre,
+          apellidos: req.body.apellidos,
+          email: req.body.email,
+          celular: req.body.celular,
+          rol:false,//debe estar en falso por default 
+          descripcion: req.body.descripcion,
+          image_url: req.body.image_url,
+          academia:req.body.academia,
+          linkedin_url:Req.body.linkedin_url,
+          cv_url: req.body.cv_url,
+          views_count: req.body.views_count,
+          last_viewed:req.body.last_viewed
+        }
+      ).then(usuarios => res.send(usuarios))
+        .catch(error => res.send(error))
+        res.redirect('/login')
+    }
   },
   modify: (req,res) =>{ 
 
+    let errors=validationResult(req)
+        
+    if(!errors.isEmpty()){
+      res.render("modify",{errors:errors.array(), old:req.body})
+    }
+    else{
+      
     //cambiar imagenes, si no se envia la imagen sigue siendo la pasada
     let imagen =req.body.imagereserva;
     if (req.file != undefined) {
         imagen=req.file.filename;
     }
 
-        db.usuarios.update({
-          nombre: req.body.name,
-          apellidos: req.body.lastName,
-          email: req.body.mail,
-          celular: req.bodoy.phNumber,
-          rol:req.body.role,
-          descripcion: req.body.description,
-          image_url: req.bodoy.image_url,
-          academia:req.bodoy.academy,
-          linkedin_url:Req.bodoy.linkedIn,
-          cv_url: req.bodoy.cv
+        db.usuarios.update({ // se cambia  de req.body a req.body
+          nombre: req.body.nombre,
+          apellidos: req.body.apellidos,
+          email: req.body.email,
+          celular: req.body.celular,
+          //rol:req.body.rol,
+          descripcion: req.body.descripcion,
+          image_url: req.body.image_url,
+          academia:req.body.academia,
+          linkedin_url:Req.body.linkedin_url,
+          cv_url: req.body.cv_url,
+          views_count: req.body.views_count,
+          last_viewed:req.body.last_viewed
         },{
             where: {
                 id: req.params.id
             }
         })
         .then(usuarios => {
-            res.send(usuarios)
-            //res.render('.', {usuarios}) Esto queda por ver
+           // res.send(usuarios)
+          
         })
         .catch(error => res.send(error))
-        res.redirect('/')
+        res.redirect('/login')
     
+    }
     
 },
 destroy: (req,res) =>{
@@ -122,8 +141,8 @@ destroy: (req,res) =>{
             id: req.params.id
         }
     })
- 
-},
+    res.redirect('/')
+}
 }
 
 module.exports = controller;
