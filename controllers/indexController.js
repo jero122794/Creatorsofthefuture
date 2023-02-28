@@ -34,18 +34,17 @@ catch(error){
 
     try {
 
-      const perfilDB = await db.usuarios.findOne({ where: { email: req.params.perfil } });
+      const perfilDB = await db.usuarios.findOne({ where: { id: req.params.id } });
 
       if (perfilDB) {
         console.log(perfilDB)
-        res.render("edicion", {title: 'Editando'+ perfilDB.nombre,perfile: perfilDB})
+        res.render("edicion", {title: 'Editando'+ perfilDB.nombre, perfil: perfilDB})
       }
 
     } catch (error) {
       res.send(error);
 
     }
-
   },
   destallesperfil: async (req, res) => {
 
@@ -68,18 +67,18 @@ catch(error){
     
     db.usuarios.create(
       {
-        nombre: req.body.nombre,
-        apellidos: req.body.apellidos,
-        email: req.body.email,
-        celular: req.bodoy.celular,
-        rol:false,//debe estar en falso por default 
-        descripcion: req.body.descripcion,
+        nombre: req.body.name,
+        apellidos: req.body.lastName,
+        email: req.body.mail,
+        celular: req.bodoy.phNumber,
+        rol:false,//debe estar en falso por default // ¿¿Por que??
+        descripcion: req.body.description,
         image_url: req.bodoy.image_url,
-        academia:req.bodoy.academia,
-        linkedin_url:Req.bodoy.linkedin_url,
-        cv_url: req.bodoy.cv_url,
+        academia:req.bodoy.academy,
+        linkedin_url:Req.bodoy.linkedIn,
+        cv_url: req.bodoy.cv,
         views_count: req.bodoy.views_count,
-        last_viewed:req.body.last_viewed
+        last_viewed:req.body.last_viewed// ¿Por que?
       }
     ).then(usuarios => res.send(usuarios))
       .catch(error => res.send(error))
@@ -93,18 +92,16 @@ catch(error){
     }
 
         db.usuarios.update({
-          nombre: req.body.nombre,
-          apellidos: req.body.apellidos,
-          email: req.body.email,
-          celular: req.bodoy.celular,
-          //rol:req.body.rol,
-          descripcion: req.body.descripcion,
+          nombre: req.body.name,
+          apellidos: req.body.lastName,
+          email: req.body.mail,
+          celular: req.bodoy.phNumber,
+          rol:req.body.role,
+          descripcion: req.body.description,
           image_url: req.bodoy.image_url,
-          academia:req.bodoy.academia,
-          linkedin_url:Req.bodoy.linkedin_url,
-          cv_url: req.bodoy.cv_url,
-          views_count: req.bodoy.views_count,
-          last_viewed:req.body.last_viewed
+          academia:req.bodoy.academy,
+          linkedin_url:Req.bodoy.linkedIn,
+          cv_url: req.bodoy.cv
         },{
             where: {
                 id: req.params.id
@@ -126,7 +123,7 @@ destroy: (req,res) =>{
         }
     })
  
-}
+},
 }
 
 module.exports = controller;

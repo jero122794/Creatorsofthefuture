@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+    <body class="vp_edit viewport">
+        <section class="register_form form">
+            <form id="edit_form" action="/editUser/" method="post" enctype="multipart/form-data">
+                <div class="input_label">
+                    <label for="name">Nombre</label>
+                    <input class="input" type="text" name="name" id="name" required placeholder="<%= perfil.nombre %>">
+                </div>
+                <div class="input_label">
+                    <label for="lastName">Apellidos</label>
+                    <input class="input" type="text" name="lastName" id="lastName" required placeholder="<%= perfil.apellidos %>">
+                </div>
+                <div class="input_label">
+                    <label for="mail">Correo Electrónico</label>
+                    <input class="input" type="email" name="mail" id="mail" required placeholder="<%= perfil.email %>">
+                </div>
+                <div class="input_label">
+                    <label for="phNumber">Número de teléfono</label>
+                    <input class="input" type="number" name="phNumber" id="phNumber" required placeholder="<%= perfil.celular %>">
+                </div>
+                <div class="input_label">
+                    <label for="role">Rol</label>
+                    <input class="input" type="text" name="role" id="role" required placeholder="<%= perfil.rol %>">
+                </div>
+                <div class="input_label">
+                    <label for="description">Descríbete brevemente</label>
+                    <textarea class="input" name="description" id="description" cols="15" rows="7"><%= perfil.descripcion %></textarea>
+                </div>
+                <div class="input_label">
+                    <label for="academy" >Academia en la que cursaste</label>
+                    <select class="input" name="academy" id="academy" value = null>
+                        <option value="DigitalHouse">Digital House</option>
+                        <option value="Makaia">Makaia</option>
+                        <option value="AcademiaGeek">Academia Geek</option>
+                    </select>
+                </div>
+                <div class="input_label">
+                    <label for="cv">Link hoja de vida</label>
+                    <input class="input" type="text" name="cv" id="cv" placeholder="<%= perfil.cv_url %>">
+                </div>
+                <div class="input_label">
+                    <label for="linkedIn">Link a tu perfil de linkedIn</label>
+                    <input class="input" type="text" name="linkedIn" id="linkedIn" required placeholder="<%= perfil.linkedin_url %>">
+                </div>
+                <div class="form_buttonBox">
+                    <button class="form_button button" type="submit">Enviar</button>
+                    <button class="form_button button" type="reset">Reiniciar</button>
+                </div>
+                <div class="errorBox" id="error">
+                    <ul class="errorList">
+                    </ul>
+                </div>
+            </form>
+        </section>
+        <script src="/js/register.js"></script>
+    </body>
+
+</html>

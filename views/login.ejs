@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-<body>
-    
+<body class="vp_login">
+    <section class="login_form form">
+        <form id="login_form" action="/loginUser/" method="post" enctype="multipart/form-data">
+            <div class="input_label">
+                <label for="mail">Correo Electrónico</label>
+                <input class="input" type="email" name="mail" id="mail" required>
+            </div>
+            <div class="input_label">
+                <label for="password">Contraseña</label>
+                <input class="input" type="password" name="password" id="password" required>
+            </div>
+            <div class="form_buttonBox">
+                <button class="form_button button" type="submit">Iniciar sesión</button>
+            </div>
+        </form>
+    </section>
+    <script src="/js/register.js"></script>
 </body>
 </html>
