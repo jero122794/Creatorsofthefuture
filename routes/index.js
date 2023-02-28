@@ -13,9 +13,9 @@ router.get('/edicion-perfil/:id', edicionperfil);
 router.get('/detalles-perfil/:perfil', destallesperfil);
 
 /* POST page. */
-router.post('/createUser/:id',multer,usuario, create);
+router.post('/createUser/',multer,usuario, create);
 router.post('/editUser/:id',multer,usuario, modify);
-//router.post('/loginUser', index);
+router.post('/loginUser', index);
 router.post('/delete/:id', destroy);
 
 module.exports = router;
