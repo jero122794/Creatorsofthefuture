@@ -1,74 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head') %>
-
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="/Creatorsofthefuture/public/img/codeicon.svg">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,500;1,700&family=Poppins:ital,wght@0,300;0,400;0,700;1,600&family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,900;1,500&display=swap" rel="stylesheet">
+    <title> Future Creators </title> 
+</head>
+ <body>
         <header class="header" id="Inicio">
             <img src="/public/img/user.svg" alt="" class="user">
             <nav class="menu-navegacion">
-                <h2 class="subtitle">Future Creators</h2>
+                <h2 class="Title">Future Creators</h2>
                 <a href="#inicio">Home</a>
-                <a href="/registro">Register</a>
-                <a href="/profileDetail">Perfiles</a>
-                <a href="/Clogin">login</a>
-            </nav>
-           
+                <a href="/Creatorsofthefuture/views/register.ejs">Register</a>
+                <a href="/Creatorsofthefuture/views/profileDetail.ejs">Perfiles</a>
+                <a href="/Creatorsofthefuture/views/login.ejs">login</a>
+            </nav> 
         </header>
-        
-
+            <img src="/public/img/Banner1-Landing-GC.png" alt="Banner Home">
     </body>
-     
         <main>
             <section class="container-carrusel" id="Perfiles">
                 <div class="container">
+
                 </div>
             </section>  
-            <section class="container3" id="Entremanientos">
-                <h2 class="subtitle" id="pruebita">Hola</h2>
-                    <div class="container-Entremanientos">
+            <section class="container3" id="Entrenamientosdelprog">
+                <h2 class="subtitle"></h2>
+                    <div class="container-Entrenamientos">
                         <div class="Check-Entrenamientos">
-                            <div class="Entremanientos">
+                            <div class="Entrenamientos">
                                 <h3 class="n-entrenamiento"><span class="tipo"></span>Entrenamiento Técnico</h3>
+                                <img src="" alt="">
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
                             </div>
-                            <div class="Entremanientos">
+                            <div class="Entrenamientos">
                                 <h3 class="n-entrenamiento"><span class="tipo"></span>Entrenamiento del Ser</h3>
+                                <img src="" alt="">
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
                             </div>
-                            <div class="Entremanientos">
+                            <div class="Entrenamientos">
                                 <h3 class="n-entrenamiento"><span class="tipo"></span>Entrenamiento en Inglés</h3>
+                                <img src="" alt="">
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
                             </div>
                         </div> 
             <section class="Developers" id="Perfiles">
                 <div class="container">
-                    <img src="" alt="" class="imagenes-perfiles">
-                    <img src="" alt="" class="imagenes-perfiles">
-                    <img src="" alt="" class="imagenes-perfiles">
-                    <img src="" alt="" class="imagenes-perfiles">
-                    <img src="" alt="" class="imagenes-perfiles">
-                    <img src="" alt="" class="imagenes-perfiles">
+                    <h2 class="subtitle">Programadores Full Stack</h2>
+                    <div class="container-perfiles">
+                        <img src="/public/img/1.jpg" alt="" class="imagenes-perfiles">
+                        <img src="/public/img/2.jpg" alt="" class="imagenes-perfiles">
+                        <img src="/public/img/3.jpg" alt="" class="imagenes-perfiles">
+                        <img src="/public/img/4.jpg" alt="" class="imagenes-perfiles">
+                        <img src="/public/img/5.jpg" alt="" class="imagenes-perfiles">
+                        <img src="/public/img/6.jpg" alt="" class="imagenes-perfiles">
+                    </div>
                 </div>
             </section>
             <section class="Testimonios" id="Testimonios"> 
                 <div class="container-testimonios">
                     <h2 class="subtitle">Testimonios</h2> 
                     <div class="container-testimonios">
-                        <img src="" alt="" class="img-testimonios">
+                        <img src="/public/img/1t.jpg" alt="" class="img-testimonios">
+                        <h3 class="n-testimonio">Nombre</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>    
                     </div>
                     <div class="container-testimonios">
-                        <img src="" alt="" class="img-testimonios">
+                        <img src="/public/img/2t.jpg" alt="" class="img-testimonios">
+                        <h3 class="n-testimonio">Nombre</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>    
                     </div>
                     <div class="container-testimonios">
-                        <img src="" alt="" class="img-testimonios">
+                        <img src="/public/img/3t.jpg" alt="" class="img-testimonios">
+                        <h3 class="n-testimonio">Nombre</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>    
                     </div>
                 </div>
             </section>
         </main>
-        <script src="/js/home.js"></script>
     </body>
   
 
@@ -76,8 +92,5 @@
         <section>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
         </section>
-    </footer>s
-</html>
-
-
+    </footer>
 </html>

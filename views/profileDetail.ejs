@@ -2,6 +2,22 @@
 <html lang="en">
 <%- include('./partials/head') %>
 <body>
+    <section>
+        <article>
+            <div>
+                <h1><%= perfilDB.nombre %></h1>
+                <p><%= perfilDB.descripcion %></p>
+            </div>
+            <div>
+                <h2>Habilidades</h2>
+                <% perfilDB.habilidades.array.forEach(element => { %>
+                    
+                <% }); %>
+            </div>
+        </article>
+        <article>
 
+        </article>
+    </section>
 </body>
 </html>

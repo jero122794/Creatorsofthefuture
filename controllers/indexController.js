@@ -1,5 +1,6 @@
 const db = require("../database/models");
 const { validationResult } = require('express-validator');
+let defaultPfp = "";
 
 const controller = {
   index: async (req, res) => {
@@ -22,32 +23,34 @@ try{
 catch(error){
 
 }
-  },
-  login: async(req, res) => {
-    try{
-      res.render("login", {title: 'Login'})
+},
+login: async(req, res) => {
+  try{
+    res.render("login", {title: 'Login'})
+  }
+  catch(error){
+  
+  }
+},
+log: (req, res) => {
+  const perfil = db.usuarios.findOne({where: {email: req.body.mail}})
+  const perfilId =perfil.id;
+  let route = "/detalles-perfil/" + perfilId;
+  res.redirect(route)
+},
+edicionperfil: async (req, res) => {
+  try {
+    const perfilDB = await db.usuarios.findOne({ where: { id: req.params.id } });
+
+    if (perfilDB) {
+      console.log(perfilDB)
+      res.render("edicion", {title: 'Editando'+ perfilDB.nombre, perfil: perfilDB})
     }
-    catch(error){
-    
-    }
-      },
-  edicionperfil: async (req, res) => {
-
-    try {
-
-      const perfilDB = await db.usuarios.findOne({ where: { id: req.params.id } });
-
-      if (perfilDB) {
-        console.log(perfilDB)
-        res.render("edicion", {title: 'Editando'+ perfilDB.nombre, perfil: perfilDB})
-      }
-
-    } catch (error) {
-      res.send(error);
-
-    }
-  },
-  destallesperfil: async (req, res) => {
+  } catch (error) {
+    res.send(error);
+  }
+},
+  detallesperfil: async (req, res) => {
 
     try {
 
@@ -80,7 +83,7 @@ catch(error){
           celular: req.body.celular,
           rol:false,//debe estar en falso por default 
           descripcion: req.body.descripcion,
-          image_url: req.body.image_url,
+          image_url: req.body.image_url? req.body.image_url : defaultPfp,
           academia:req.body.academia,
           linkedin_url:Req.body.linkedin_url,
           cv_url: req.body.cv_url,
