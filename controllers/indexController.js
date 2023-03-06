@@ -137,7 +137,49 @@ destroy: (req,res) =>{
         }
     })
     res.redirect('/')
-}
+},
+check:(req,res)=>{
+  let errors = validationResult(req)
+  console.log(errors)
+  //res.send({errors})
+  if(errors.isEmpty()){
+      db.usuarios.findOne({
+          where:{
+              email: req.body.email
+          }
+      }).then(usuarios => {
+          let contraseña
+
+              console.log(usuarios)
+              contraseña=usuarios.contraseña
+
+              let validator=bcrypt.compareSync(req.body.password,contraseña)
+              console.log(validator)
+
+              if(validator==true){
+                  res.redirect('/home')
+
+              }
+              if (validator==false){
+                  let incorrecto ="Su correo o contraseña es incorrecto";
+
+                 res.render("login",{errors:errors.array(), old:req.body,incorrecto})
+              }
+
+  }).catch(errors => {
+      res.render("login")
+      console.log(errors)
+
+      })
+
+  }
+  if(!errors.isEmpty()){
+      let incorrecto
+      res.render("login",{errors:errors.array(), old:req.body,incorrecto})
+  }
+
+
+},
 }
 
 module.exports = controller;
