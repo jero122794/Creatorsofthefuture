@@ -34,11 +34,11 @@ login: async(req, res) => {
 },
 edicionperfil: async (req, res) => {
   try {
-    const perfilDB = await db.usuarios.findOne({ where: { id: req.params.id } });
+    const usuarios = await db.usuarios.findOne({ where: { id: req.params.id } });
 
-    if (perfilDB) {
-      console.log(perfilDB)
-      res.render("edicion", {title: 'Editando'+ perfilDB.nombre, perfil: perfilDB})
+    if (usuarios) {
+      console.log(usuarios)
+      res.render("edicion", {title: 'Editando'+ usuarios.nombre, perfil: usuarios})
     }
   } catch (error) {
     res.send(error);
@@ -48,11 +48,11 @@ edicionperfil: async (req, res) => {
 
     try {
 
-      const perfilDB = await db.usuarios.findOne({ where: { email: req.params.perfil } });
+      const usuarios = await db.usuarios.findOne({ where: { email: req.params.perfil } });
 
-      if (perfilDB) {
-        console.log(perfilDB)
-        res.render("profileDetail", {title:perfilDB.nombre/*,perfil: perfilDB+*/})
+      if (usuarios) {
+        console.log(usuarios)
+        res.render("profileDetail", {title:usuarios.nombre/*,perfil: usuarios+*/})
       }
 
     } catch (error) {
@@ -79,10 +79,11 @@ edicionperfil: async (req, res) => {
           descripcion: req.body.descripcion,
           image_url: req.body.image_url? req.body.image_url : defaultPfp,
           academia:req.body.academia,
-          linkedin_url:Req.body.linkedin_url,
-          cv_url: req.body.cv_url
+          linkedin_url:req.body.linkedin_url,
+          cv_url: req.body.cv_url,
+          contrasena: req.body.contrasena
         }
-      ).then(usuarios => res.send(usuarios))
+      ).then(usuarios => res.render("profileDetail"))
         .catch(error => res.send(error))
         res.redirect('/login')
     }
@@ -98,6 +99,7 @@ edicionperfil: async (req, res) => {
       
     //cambiar imagenes, si no se envia la imagen sigue siendo la pasada
     let imagen =req.body.imagereserva;
+
     if (req.file != undefined) {
         imagen=req.file.filename;
     }
@@ -107,21 +109,21 @@ edicionperfil: async (req, res) => {
           apellidos: req.body.apellidos,
           email: req.body.email,
           celular: req.body.celular,
-          //rol:req.body.rol,
+          rol:req.body.rol,
           descripcion: req.body.descripcion,
           image_url: req.body.image_url,
           academia:req.body.academia,
-          linkedin_url:Req.body.linkedin_url,
+          linkedin_url:req.body.linkedin_url,
           cv_url: req.body.cv_url,
-          views_count: req.body.views_count,
-          last_viewed:req.body.last_viewed
+          contrasena: req.body.contrasena,
+          
         },{
             where: {
                 id: req.params.id
             }
         })
         .then(usuarios => {
-           // res.send(usuarios)
+            res.render("profileDetail") 
           
         })
         .catch(error => res.send(error))
@@ -148,12 +150,12 @@ check:(req,res)=>{
               email: req.body.email
           }
       }).then(usuarios => {
-          let contraseña
+          let contrasena
 
               console.log(usuarios)
-              contraseña=usuarios.contraseña
+              contrasena=usuarios.contrasena
 
-              let validator=bcrypt.compareSync(req.body.password,contraseña)
+              let validator=bcrypt.compareSync(req.body.password,contrasena)
               console.log(validator)
 
               if(validator==true){

@@ -59,6 +59,14 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.TINYINT(1),
             allowNull: false
         },
+        contrasena:{
+            type: dataTypes.STRING(255),
+            allowNull: false
+        },
+        admin:{
+            type: dataTypes.TINYINT(1),
+            allowNull: false
+        },
 
     };
     let config = {
