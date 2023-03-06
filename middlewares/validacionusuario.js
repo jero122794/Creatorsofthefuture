@@ -14,7 +14,7 @@ const validaciones={
         .notEmpty().withMessage('DEBES INGRESAR TU EMAIL.').bail()
         .isEmail().withMessage('DEBES INGRESAR UN EMAIL VALIDO.'),
         
-        check('telefono')
+        check('celular')
         .notEmpty().withMessage('DEBES INGRESAR TU NUMERO DE TELEFONO').bail()
         .isLength({min:10}).withMessage("TU CORREO DEBE TENER AL MENOS 10 DIGITOS.")
         .bail().isInt().withMessage("DEBES INGRESAR NUMEROS."),

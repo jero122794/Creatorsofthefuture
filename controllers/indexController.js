@@ -11,12 +11,12 @@ const controller = {
       if (perfilesDB) {
         res.render("home", {title: 'home',perfiles: perfilesDB})
         console.log(perfilesDB)
-      } 
-
+      }
     } catch (error) {
       console.log(error);
     }
-  },registro: async(req, res) => {
+  },
+registro: async(req, res) => {
 try{
   res.render("register", {title: 'Registro'})
 }
@@ -31,12 +31,6 @@ login: async(req, res) => {
   catch(error){
   
   }
-},
-log: (req, res) => {
-  const perfil = db.usuarios.findOne({where: {email: req.body.mail}})
-  const perfilId =perfil.id;
-  let route = "/detalles-perfil/" + perfilId;
-  res.redirect(route)
 },
 edicionperfil: async (req, res) => {
   try {
@@ -58,7 +52,7 @@ edicionperfil: async (req, res) => {
 
       if (perfilDB) {
         console.log(perfilDB)
-        res.render("profileDetail", {title:perfilDB.nombre,perfil: perfilDB})
+        res.render("profileDetail", {title:perfilDB.nombre/*,perfil: perfilDB+*/})
       }
 
     } catch (error) {
@@ -72,7 +66,7 @@ edicionperfil: async (req, res) => {
     let errors=validationResult(req)
         
     if(!errors.isEmpty()){
-      res.render("register",{errors:errors.array(), old:req.body})
+      res.render("register",{errors: errors.array(), old:req.body})
     }
     else{
       db.usuarios.create(
@@ -81,14 +75,12 @@ edicionperfil: async (req, res) => {
           apellidos: req.body.apellidos,
           email: req.body.email,
           celular: req.body.celular,
-          rol:false,//debe estar en falso por default 
+          rol:req.body.rol,
           descripcion: req.body.descripcion,
           image_url: req.body.image_url? req.body.image_url : defaultPfp,
           academia:req.body.academia,
           linkedin_url:Req.body.linkedin_url,
-          cv_url: req.body.cv_url,
-          views_count: req.body.views_count,
-          last_viewed:req.body.last_viewed
+          cv_url: req.body.cv_url
         }
       ).then(usuarios => res.send(usuarios))
         .catch(error => res.send(error))
