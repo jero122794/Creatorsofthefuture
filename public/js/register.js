@@ -56,6 +56,9 @@ window.addEventListener("load", function(e){
     passwordConfirmationInput.addEventListener("blur", validateEmpty)
     //formulario
     registerForm.addEventListener("submit", (e)=>{
-       
+       if(passwordInput.value != passwordConfirmationInput.value){
+            e.preventDefault
+            alert("Contraseñas diferentes")
+       }
     })
 })
