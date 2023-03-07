@@ -52,7 +52,7 @@ edicionperfil: async (req, res) => {
 
       if (usuarios) {
         console.log(usuarios)
-        res.render("profileDetail", {title:usuarios.nombre/*,perfil: usuarios+*/})
+        res.render("profileDetail", {title:usuarios.nombre, perfil: usuarios})
       }
 
     } catch (error) {

@@ -182,8 +182,16 @@ header{
 .container-testimonios{
 
 }
+.profileBox{
+    display: flex;
+    flex-grow: 25%;
+    height: 150px;
+}
 
-
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 
 

@@ -16,7 +16,7 @@
             </div>
             <div class="input_label">
                 <label for="image">Tu foto de perfil</label>
-                <input class="input form_input" type="image" name="imagen" id="image" alt="Tu foto de perfil">
+                <input class="input form_input" type="image" name="image_url" id="image" alt="Tu foto de perfil">
             </div>
             <div class="input_label">
                 <label for="mail">Correo Electrónico</label>
@@ -41,6 +41,7 @@
             <div class="input_label">
                 <label for="academy">Academia en la que cursaste</label>
                 <select class="input" name="academia" id="academy">
+                    <option value=""></option>
                     <option value="DigitalHouse">Digital House</option>
                     <option value="Makaia">Makaia</option>
                     <option value="AcademiaGeek">Academia Geek</option>
@@ -48,17 +49,17 @@
             </div>
             <div class="input_label">
                 <label for="cv">Link hoja de vida</label>
-                <input class="input" type="text" name="cv" id="cv" >
+                <input class="input" type="text" name="cv_url" id="cv" >
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="linkedIn">Link a tu perfil de linkedIn</label>
-                <input class="input" type="text" name="linkedIn" id="linkedIn" >
+                <input class="input" type="text" name="linkedin_url" id="linkedIn" >
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="password">Contraseña</label>
-                <input class="input" type="password" name="contraseña" id="password" required>
+                <input class="input" type="password" name="contrasena" id="password" required>
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
@@ -72,6 +73,13 @@
             </div>
         </form>
     </section>
+    <div class="errorBox" id="error">
+        <ul class="errorList">
+            <% errors.array.forEach(error => { %>
+                <p><%= error %></p>
+            <% }) %>
+        </ul>
+    </div>
     <script src="/js/register.js"></script>
 </body>
 </html>

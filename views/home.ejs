@@ -23,73 +23,25 @@
             </nav> 
         </header>
             <img src="/public/img/Banner1-Landing-GC.png" alt="Banner Home">
-    </body>
-        <main>
-            <section class="container-carrusel" id="Perfiles">
-                <div class="container">
-
-                </div>
-            </section>  
-            <section class="container3" id="Entrenamientosdelprog">
-                <h2 class="subtitle"></h2>
-                    <div class="container-Entrenamientos">
-                        <div class="Check-Entrenamientos">
-                            <div class="Entrenamientos">
-                                <h3 class="n-entrenamiento"><span class="tipo"></span>Entrenamiento Técnico</h3>
-                                <img src="" alt="">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
-                            </div>
-                            <div class="Entrenamientos">
-                                <h3 class="n-entrenamiento"><span class="tipo"></span>Entrenamiento del Ser</h3>
-                                <img src="" alt="">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
-                            </div>
-                            <div class="Entrenamientos">
-                                <h3 class="n-entrenamiento"><span class="tipo"></span>Entrenamiento en Inglés</h3>
-                                <img src="" alt="">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
-                            </div>
-                        </div> 
-            <section class="Developers" id="Perfiles">
-                <div class="container">
-                    <h2 class="subtitle">Programadores Full Stack</h2>
-                    <div class="container-perfiles">
-                        <img src="/public/img/1.jpg" alt="" class="imagenes-perfiles">
-                        <img src="/public/img/2.jpg" alt="" class="imagenes-perfiles">
-                        <img src="/public/img/3.jpg" alt="" class="imagenes-perfiles">
-                        <img src="/public/img/4.jpg" alt="" class="imagenes-perfiles">
-                        <img src="/public/img/5.jpg" alt="" class="imagenes-perfiles">
-                        <img src="/public/img/6.jpg" alt="" class="imagenes-perfiles">
-                    </div>
-                </div>
+            <section class="gallery">
+                <% perfiles.array.forEach(element => { %>
+                    <article class="profileBox">
+                        <h1><%= element.nombre %></h1>
+                        <p><%= element.descripcion %></p>
+                        <img src="<%= element.image_url %>" alt="Pfp">
+                        <p><%= element.apellidos %></p>
+                        <p><%= element.email %></p>
+                        <p><%= element.celular %></p>
+                        <p><%= element.rol %></p>
+                        <p><%= element.academia %></p>
+                        <p><%= element.linkedin_url %></p>
+                        <p><%= element.cv_url %></p>
+                        <p><%= element.views_count %></p>
+                        <p><%= element.last_viewed %></p>
+                        <p><%= element.activo %></p>
+                    </article>
+                        
+                <% }); %>
             </section>
-            <section class="Testimonios" id="Testimonios"> 
-                <div class="container-testimonios">
-                    <h2 class="subtitle">Testimonios</h2> 
-                    <div class="container-testimonios">
-                        <img src="/public/img/1t.jpg" alt="" class="img-testimonios">
-                        <h3 class="n-testimonio">Nombre</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>    
-                    </div>
-                    <div class="container-testimonios">
-                        <img src="/public/img/2t.jpg" alt="" class="img-testimonios">
-                        <h3 class="n-testimonio">Nombre</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>    
-                    </div>
-                    <div class="container-testimonios">
-                        <img src="/public/img/3t.jpg" alt="" class="img-testimonios">
-                        <h3 class="n-testimonio">Nombre</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>    
-                    </div>
-                </div>
-            </section>
-        </main>
     </body>
-  
-
-    <footer>
-        <section>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-        </section>
-    </footer>
 </html>

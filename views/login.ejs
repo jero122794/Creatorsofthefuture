@@ -6,17 +6,27 @@
         <form id="login_form" action="/loginUser/" method="post" enctype="multipart/form-data">
             <div class="input_label">
                 <label for="mail">Correo Electrónico</label>
-                <input class="input" type="email" name="mail" id="mail" required>
+                <input class="input" type="email" name="email" id="mail" required>
             </div>
             <div class="input_label">
                 <label for="password">Contraseña</label>
-                <input class="input" type="password" name="password" id="password" required>
+                <input class="input" type="password" name="contrasena" id="password" required>
+            </div>
+            <div class="input_label">
+                <input type="checkbox" name="recuerdame" id="recuerdame"><label for="recuerdame">Recuérdame</label>
             </div>
             <div class="form_buttonBox">
                 <button class="form_button button" type="submit">Iniciar sesión</button>
             </div>
         </form>
     </section>
+    <div class="errorBox" id="error">
+        <ul class="errorList">
+            <% errors.array.forEach(error => { %>
+                <p><%= error %></p>
+            <% }) %>
+        </ul>
+    </div>
     <script src="/js/register.js"></script>
 </body>
 </html>
