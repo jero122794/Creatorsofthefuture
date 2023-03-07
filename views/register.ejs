@@ -6,12 +6,12 @@
         <form id="register_form" action="/createUser/" method="post" enctype="multipart/form-data">
             <div class="input_label">
                 <label for="name">Nombre</label>
-                <input class="input" type="text" name="nombre" id="name" required>
+                <input class="input" type="text" name="nombre" id="name" required value="<%= locals.old && old.nombre ? old.nombre : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="lastName">Apellidos</label>
-                <input class="input form_input" type="text" name="apellidos" id="lastName" required>
+                <input class="input form_input" type="text" name="apellidos" id="lastName" required value="<%= locals.old && old.apellidos ? old.apellidos : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
@@ -20,17 +20,18 @@
             </div>
             <div class="input_label">
                 <label for="mail">Correo Electrónico</label>
-                <input class="input form_input" type="email" name="email" id="mail" required>
+                <input class="input form_input" type="email" name="email" id="mail" required value="<%= locals.old && old.email ? old.email : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="phNumber">Número de teléfono</label>
-                <input class="input form_input" type="number" name="celular" id="phNumber" required>
+                <input class="input form_input" type="number" name="celular" id="phNumber" required value="<%= locals.old && old.celular ? old.celular : '' %>">
+                <span class="spanTagError"></span>
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="role">Rol</label>
-                <input class="input form_input" type="text" name="rol" id="role" required>
+                <input class="input form_input" type="text" name="rol" id="role" value="<%= locals.old && old.rol ? old.rol : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
@@ -49,22 +50,22 @@
             </div>
             <div class="input_label">
                 <label for="cv">Link hoja de vida</label>
-                <input class="input" type="text" name="cv_url" id="cv" >
+                <input class="input" type="text" name="cv_url" id="cv" value="<%= locals.old && old.cv ? old.cv : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="linkedIn">Link a tu perfil de linkedIn</label>
-                <input class="input" type="text" name="linkedin_url" id="linkedIn" >
+                <input class="input" type="text" name="linkedin_url" id="linkedIn" value="<%= locals.old && old.linkedIn ? old.linkedIn : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="password">Contraseña</label>
-                <input class="input" type="password" name="contrasena" id="password" required>
+                <input class="input" type="password" name="contrasena" id="password" value="<%= locals.old && old.contrasena ? old.contrasena : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
                 <label for="passwordConfirmation">Confirme su contraseña</label>
-                <input class="input" type="password" name="confirmacion contraseña" id="passwordConfirmation" required>
+                <input class="input" type="password" name="confirmacioncontrasena" id="passwordConfirmation" required value="<%= locals.old && old.confirmacioncontrasena ? old.confirmacioncontrasena : '' %>">
                 <span class="spanTagError"></span>
             </div>
             <div class="form_buttonBox">
@@ -75,9 +76,11 @@
     </section>
     <div class="errorBox" id="error">
         <ul class="errorList">
-            <% errors.array.forEach(error => { %>
-                <p><%= error %></p>
-            <% }) %>
+            <%if(locals.errors) {
+                errors.forEach(errors => {%>
+              <p style="color: blue;"><%=errors.msg%></p>
+              <% })
+                }%>  
         </ul>
     </div>
     <script src="/js/register.js"></script>

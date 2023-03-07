@@ -38,7 +38,7 @@ edicionperfil: async (req, res) => {
 
     if (usuarios) {
       console.log(usuarios)
-      res.render("edicion", {title: 'Editando'+ usuarios.nombre, perfil: usuarios})
+      res.render("edit", {title: 'Editando'+ usuarios.nombre, perfil: usuarios})
     }
   } catch (error) {
     res.send(error);
@@ -64,7 +64,7 @@ edicionperfil: async (req, res) => {
   create: function (req, res) {
 
     let errors=validationResult(req)
-        
+        console.log(errors)
     if(!errors.isEmpty()){
       res.render("register",{errors: errors.array(), old:req.body})
     }
@@ -77,15 +77,19 @@ edicionperfil: async (req, res) => {
           celular: req.body.celular,
           rol:req.body.rol,
           descripcion: req.body.descripcion,
-          image_url: req.body.image_url? req.body.image_url : defaultPfp,
+          image_url: req.body.imagen? req.body.imagen : "defaultPfp.png",
           academia:req.body.academia,
           linkedin_url:req.body.linkedin_url,
           cv_url: req.body.cv_url,
-          contrasena: req.body.contrasena
+          contrasena: req.body.contrasena,
+          last_viewed: 0,
+          views_count: 0,
+          activo: 1,
+          admin: 0
         }
-      ).then(usuarios => res.render("profileDetail"))
+      ).then(usuarios => usuarios)
         .catch(error => res.send(error))
-        res.redirect('/login')
+        res.redirect("/login")
     }
   },
   modify: (req,res) =>{ 
@@ -93,7 +97,7 @@ edicionperfil: async (req, res) => {
     let errors=validationResult(req)
         
     if(!errors.isEmpty()){
-      res.render("modify",{errors:errors.array(), old:req.body})
+      res.render("edit",{errors:errors.array(), old:req.body})
     }
     else{
       

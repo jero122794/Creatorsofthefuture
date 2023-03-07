@@ -22,9 +22,11 @@
     </section>
     <div class="errorBox" id="error">
         <ul class="errorList">
-            <% errors.array.forEach(error => { %>
-                <p><%= error %></p>
-            <% }) %>
+            <%if(locals.errors) {
+                errors.forEach(errors => {%>
+              <p><%=errors.msg%></p>
+              <% })
+                }%>  
         </ul>
     </div>
     <script src="/js/register.js"></script>

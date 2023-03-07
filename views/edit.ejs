@@ -4,26 +4,26 @@
 
     <body class="vp_edit viewport">
         <section class="register_form form">
-            <form id="edit_form" action="/editUser/" method="post" enctype="multipart/form-data">
+            <form id="edit_form" action="/editUser/<%= perfil.id %>" method="post" enctype="multipart/form-data">
                 <div class="input_label">
                     <label for="name">Nombre</label>
-                    <input class="input" type="text" name="nombre" id="name" required placeholder="<%= perfil.nombre %>">
+                    <input class="input" type="text" name="nombre" id="name" required value="<%= perfil.nombre %>">
                 </div>
                 <div class="input_label">
                     <label for="lastName">Apellidos</label>
-                    <input class="input" type="text" name="apellidos" id="lastName" required placeholder="<%= perfil.apellidos %>">
+                    <input class="input" type="text" name="apellidos" id="lastName" required value="<%= perfil.apellidos %>">
                 </div>
                 <div class="input_label">
                     <label for="mail">Correo Electrónico</label>
-                    <input class="input" type="email" name="email" id="mail" required placeholder="<%= perfil.email %>">
+                    <input class="input" type="email" name="email" id="mail" required value="<%= perfil.email %>">
                 </div>
                 <div class="input_label">
                     <label for="phNumber">Número de teléfono</label>
-                    <input class="input" type="number" name="celular" id="phNumber" required placeholder="<%= perfil.celular %>">
+                    <input class="input" type="number" name="celular" id="phNumber" required value="<%= perfil.celular %>">
                 </div>
                 <div class="input_label">
                     <label for="role">Rol</label>
-                    <input class="input" type="text" name="rol" id="role" required placeholder="<%= perfil.rol %>">
+                    <input class="input" type="text" name="rol" id="role" required value="<%= perfil.rol %>">
                 </div>
                 <div class="input_label">
                     <label for="description">Descríbete brevemente</label>
@@ -39,11 +39,11 @@
                 </div>
                 <div class="input_label">
                     <label for="cv">Link hoja de vida</label>
-                    <input class="input" type="text" name="cv_url" id="cv" placeholder="<%= perfil.cv_url %>">
+                    <input class="input" type="text" name="cv_url" id="cv" value="<%= perfil.cv_url %>">
                 </div>
                 <div class="input_label">
                     <label for="linkedIn">Link a tu perfil de linkedIn</label>
-                    <input class="input" type="text" name="linkedin_url" id="linkedIn" required placeholder="<%= perfil.linkedin_url %>">
+                    <input class="input" type="text" name="linkedin_url" id="linkedIn" required value="<%= perfil.linkedin_url %>">
                 </div>
                 <div class="form_buttonBox">
                     <button class="form_button button" type="submit">Enviar</button>
@@ -51,9 +51,11 @@
                 </div>
                 <div class="errorBox" id="error">
                     <ul class="errorList">
-                        <% errors.array.forEach(error => { %>
-                            <p><%= error %></p>
-                        <% }) %>
+                        <%if(locals.errors) {
+                            errors.forEach(errors => {%>
+                          <p><%=errors.msg%></p>
+                          <% })
+                            }%>  
                     </ul>
                 </div>
             </form>
