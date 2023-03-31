@@ -6,7 +6,7 @@ const controller = {
   index: async (req, res) => {
     try {
 
-      const perfilesDB = await db.usuarios.findAll();
+      const perfilesDB = await db.usuarios.findAll({include: {all: true,nested: true}});
 
       if (perfilesDB) {
         res.render("home", {title: 'home',perfiles: perfilesDB})
@@ -34,7 +34,7 @@ login: async(req, res) => {
 },
 edicionperfil: async (req, res) => {
   try {
-    const usuarios = await db.usuarios.findOne({ where: { id: req.params.id } });
+    const usuarios = await db.usuarios.findOne({ where: { id: req.params.id } },{include: {all: true,nested: true}});
 
     if (usuarios) {
       console.log(usuarios)
@@ -48,7 +48,7 @@ edicionperfil: async (req, res) => {
 
     try {
 
-      const usuarios = await db.usuarios.findOne({ where: { email: req.params.perfil } });
+      const usuarios = await db.usuarios.findOne({ where: { email: req.params.perfil } },{include: {all: true,nested: true}});
 
       if (usuarios) {
         console.log(usuarios)
