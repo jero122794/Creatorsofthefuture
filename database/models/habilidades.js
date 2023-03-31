@@ -34,4 +34,5 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "id_habilidad"
         })
     }
+    return habilidades;
 }
