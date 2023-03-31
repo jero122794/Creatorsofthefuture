@@ -82,6 +82,7 @@ edicionperfil: async (req, res) => {
           linkedin_url:req.body.linkedin_url,
           cv_url: req.body.cv_url,
           contrasena: req.body.contrasena,
+          github_url: req.body.github,
           last_viewed: 0,
           views_count: 0,
           activo: 1,
@@ -120,6 +121,7 @@ edicionperfil: async (req, res) => {
           linkedin_url:req.body.linkedin_url,
           cv_url: req.body.cv_url,
           contrasena: req.body.contrasena,
+          github_url: req.body.github,
           
         },{
             where: {

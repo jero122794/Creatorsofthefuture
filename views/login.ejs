@@ -20,15 +20,6 @@
             </div>
         </form>
     </section>
-    <div class="errorBox" id="error">
-        <ul class="errorList">
-            <%if(locals.errors) {
-                errors.forEach(errors => {%>
-              <p><%=errors.msg%></p>
-              <% })
-                }%>  
-        </ul>
-    </div>
     <script src="/js/register.js"></script>
 </body>
 </html>

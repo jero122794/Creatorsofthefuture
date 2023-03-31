@@ -5,7 +5,8 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true
+            autoIncrement: true,
+            unique: true
         },
         nombre:{
             type: dataTypes.STRING(50),
@@ -29,11 +30,11 @@ module.exports = (sequelize, dataTypes) => {
         },
         descripcion:{
             type: dataTypes.STRING(255),
-            allowNull: false
+            allowNull: true
         },
         image_url:{
             type: dataTypes.STRING(255),
-            allowNull: false
+            allowNull: true
         },
         academia:{
             type: dataTypes.STRING(100),
@@ -41,19 +42,19 @@ module.exports = (sequelize, dataTypes) => {
         },
         linkedin_url:{
             type: dataTypes.STRING(255),
-            allowNull: false
+            allowNull: true
         },
         cv_url:{
             type: dataTypes.STRING(255),
-            allowNull: false
+            allowNull: true
         },
         views_count:{
             type: dataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         last_viewed:{
             type: dataTypes.DATE,
-            allowNull: false
+            allowNull: true
         },
         activo:{
             type: dataTypes.TINYINT(1),
@@ -67,13 +68,23 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.TINYINT(1),
             allowNull: false
         },
-
+        github_url: {
+            type: dataTypes.STRING(255),
+            allowNull: true
+        }
     };
     let config = {
         tableName: 'usuarios',
         timestamps: false
     }
     const usuarios = sequelize.define(alias,cols,config);
+    
+    usuarios.associate = function(models) {
+        usuarios.hasMany(models.usuarioshabilidades, {
+            as: "usuarios", //nombre de la relacion con tabla usuarios
+            foreignKey: "id_usuario"
+        })
+    }
 
     return usuarios
 };

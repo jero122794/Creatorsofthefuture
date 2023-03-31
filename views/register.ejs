@@ -59,6 +59,11 @@
                 <span class="spanTagError"></span>
             </div>
             <div class="input_label">
+                <label for="github">Link a tu perfil de github</label>
+                <input class="input" type="text" name="github_url" id="github" value="<%= locals.old && old.linkedIn ? old.linkedIn : '' %>">
+                <span class="spanTagError"></span>
+            </div>
+            <div class="input_label">
                 <label for="password">Contraseña</label>
                 <input class="input" type="password" name="contrasena" id="password" value="<%= locals.old && old.contrasena ? old.contrasena : '' %>">
                 <span class="spanTagError"></span>
@@ -74,15 +79,7 @@
             </div>
         </form>
     </section>
-    <div class="errorBox" id="error">
-        <ul class="errorList">
-            <%if(locals.errors) {
-                errors.forEach(errors => {%>
-              <p style="color: blue;"><%=errors.msg%></p>
-              <% })
-                }%>  
-        </ul>
-    </div>
+    
     <script src="/js/register.js"></script>
 </body>
 </html>

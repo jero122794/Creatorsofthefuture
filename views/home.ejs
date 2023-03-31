@@ -15,16 +15,10 @@
  <body>
         <header class="header" id="Inicio">
             <img src="/public/img/user.svg" alt="" class="user">
-            <nav class="menu-navegacion">
-                <h2 class="Title">Future Creators</h2>
-                <a href="#inicio">Home</a>
-                <a href="/registro">Register</a>
-                <a href="/login">login</a>
-            </nav> 
         </header>
             <img src="/public/img/Banner1-Landing-GC.png" alt="Banner Home">
             <section class="gallery">
-                <% perfiles.array.forEach(element => { %>
+                <% for(element of perfiles){ %>
                     <article class="profileBox">
                         <h1><%= element.nombre %></h1>
                         <p><%= element.descripcion %></p>
@@ -41,7 +35,7 @@
                         <p><%= element.activo %></p>
                     </article>
                         
-                <% }); %>
+                <% }; %>
             </section>
     </body>
 </html>

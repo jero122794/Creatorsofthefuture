@@ -13,7 +13,8 @@ window.addEventListener("load", function(e){
     let cvInput = document.querySelector("#cv");
     let linkedInInput = document.querySelector("#linkedIn");
     let passwordInput = document.querySelector("#password");
-    let passwordConfirmationInput = document.querySelector("#passwordConfirmation")
+    let passwordConfirmationInput = document.querySelector("#passwordConfirmation");
+    let githubInput = document.querySelector("#github")
     //validating functions
     let validateEmpty = (e) =>{
         let input = e.target;
@@ -55,6 +56,7 @@ window.addEventListener("load", function(e){
     passwordInput.addEventListener("blur", validateLength)
     passwordConfirmationInput.addEventListener("blur", validateEmpty)
     //formulario
+    githubInput.addEventListener("blur", validateEmpty)
     registerForm.addEventListener("submit", (e)=>{
        if(passwordInput.value != passwordConfirmationInput.value){
             e.preventDefault
