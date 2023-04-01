@@ -3,9 +3,9 @@ module.exports = (sequelize, dataTypes) => {
     let cols = {
         id: {
             type: dataTypes.INTEGER.UNSIGNED,
-            primarykey: true,
+            primaryKey: true,
+            allowNull: false,
             autoIncrement: true,
-            allowNull: true,
             unique: true
         },
         id_usuario: {

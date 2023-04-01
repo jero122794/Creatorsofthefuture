@@ -3,7 +3,7 @@ var router = express.Router();
 const { index, registro, login, edicionperfil, detallesperfil, destroy, modify, create, check} = require("../controllers/indexController")
 const {register, edit} = require("../middlewares/validacionusuario");
 const multer = require("../middlewares/multer");
-
+const {admin } = require("../middlewares/administrador");
 
 /* GET page. */
 router.get('/', index);
@@ -15,7 +15,7 @@ router.get('/detalles-perfil/:perfil', detallesperfil);
 /* POST page. */
 router.post('/createUser/',multer, register, create);
 router.post('/editUser/:id',multer, edit, modify);
-router.post('/loginUser', check);
+router.post('/loginUser', admin, check );
 router.post('/delete/:id', destroy);
 
 module.exports = router;
