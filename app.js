@@ -9,7 +9,7 @@ const session = require('express-session')
 
 const app = express();
 // server setup
-app.listen(4000, console.log("Online 4000"))
+app.listen(3000, console.log("Online 3000"))
 
 
 app.use(express.static(path.resolve(__dirname, 'public')))
