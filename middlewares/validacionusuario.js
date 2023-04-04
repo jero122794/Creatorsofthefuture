@@ -20,22 +20,11 @@ const validaciones={
         .bail().isInt().withMessage("DEBES INGRESAR NUMEROS."),
     
         check('descripcion')
-        .notEmpty().withMessage('DEBES INGRESAR DE NUEVO TU DESCRIPCION').bail()
         .isLength({min:6}).withMessage("LA DESCRIPCION DEBE TENER AL MENOS 10 CARACTERES."),
         
         check('academia')
-        .notEmpty().withMessage('DEBES INGRESAR NOMBRE DE TU ACADEMIA.').bail()
         .isLength({min:2}).withMessage("EL NOMBRE DE TU ACADEMIA DEBE TENER AL MENOS 5 CARACTERES."),
         
-        check('linkedin_url')
-        .notEmpty().withMessage('DEBES INGRESAR LA URL DE TU LINKEDIN.'),
-        
-        check('cv_url')
-        .notEmpty().withMessage('DEBES INGRESAR LA URL DE TU CURRICULUM'),
-
-        check('rol')
-        .notEmpty().withMessage('DEBES INGRESAR Tu Rol DE TRABAJO'),
-
         check('contrasena')
         .notEmpty().withMessage('DEBES INGRESAR TU CONTRASEÑA').bail()
         .isLength({min:8}).withMessage("TU CONTRASEÑA DEBE TENER AL MENOS 8 DIGITOS."),
@@ -64,22 +53,11 @@ const validaciones={
         .bail().isInt().withMessage("DEBES INGRESAR NUMEROS."),
     
         check('descripcion')
-        .notEmpty().withMessage('DEBES INGRESAR DE NUEVO TU DESCRIPCION').bail()
         .isLength({min:6}).withMessage("LA DESCRIPCION DEBE TENER AL MENOS 10 CARACTERES."),
         
         check('academia')
-        .notEmpty().withMessage('DEBES INGRESAR NOMBRE DE TU ACADEMIA.').bail()
         .isLength({min:2}).withMessage("EL NOMBRE DE TU ACADEMIA DEBE TENER AL MENOS 5 CARACTERES."),
         
-        check('linkedin_url')
-        .notEmpty().withMessage('DEBES INGRESAR LA URL DE TU LINKEDIN.'),
-        
-        check('cv_url')
-        .notEmpty().withMessage('DEBES INGRESAR LA URL DE TU CURRICULUM'),
-
-        check('rol')
-        .notEmpty().withMessage('DEBES INGRESAR Tu Rol DE TRABAJO')
-
     ]
 }
 module.exports = validaciones;
